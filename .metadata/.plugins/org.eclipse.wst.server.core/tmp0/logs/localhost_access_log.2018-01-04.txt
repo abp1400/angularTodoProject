@@ -1,0 +1,9 @@
+127.0.0.1 - - [04/Jan/2018:14:19:53 -0700] "GET / HTTP/1.1" 404 994
+0:0:0:0:0:0:0:1 - - [04/Jan/2018:14:20:08 -0700] "GET /MVCProject/ HTTP/1.1" 200 719
+0:0:0:0:0:0:0:1 - - [04/Jan/2018:14:20:08 -0700] "GET /MVCProject/app/appModule/app.module.js HTTP/1.1" 200 31
+0:0:0:0:0:0:0:1 - - [04/Jan/2018:14:20:08 -0700] "GET /MVCProject/app/appModule/pokelist.service.js HTTP/1.1" 200 528
+0:0:0:0:0:0:0:1 - - [04/Jan/2018:14:20:08 -0700] "GET /MVCProject/app/appModule/toDoList/toDoList.component.js HTTP/1.1" 200 1528
+0:0:0:0:0:0:0:1 - - [04/Jan/2018:14:20:08 -0700] "GET /MVCProject/app/appModule/product.service.js HTTP/1.1" 200 1052
+0:0:0:0:0:0:0:1 - - [04/Jan/2018:14:20:08 -0700] "GET /MVCProject/app/appModule/pokeList/pokeList.component.js HTTP/1.1" 200 603
+0:0:0:0:0:0:0:1 - - [04/Jan/2018:14:20:08 -0700] "GET /MVCProject/app/appModule/todo.service.js HTTP/1.1" 200 1245
+0:0:0:0:0:0:0:1 - - [04/Jan/2018:14:20:08 -0700] "GET /MVCProject/app/appModule/pokeList/pokeList.component.html HTTP/1.1" 200 606

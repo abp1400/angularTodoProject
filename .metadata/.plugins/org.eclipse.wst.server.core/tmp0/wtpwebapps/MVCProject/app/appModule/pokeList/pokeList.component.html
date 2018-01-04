@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PokeList</title>
+</head>
+<body>
+
+	<form>
+
+pokeId <input type="text" ng-model="pokemon.pokeId"/> <br>
+Name <input type="text" ng-model="pokemon.name"/> <br>
+Height <input type="text" ng-model="pokemon.height"/> <br>
+Weight <input type="text" ng-model="pokemon.weight"/> <br>
+Exp <input type="text" ng-model="pokemon.exp"/> <br>
+ <input type="submit" value="Add Pokemon" ng-click="vm.create(pokemon);pokemon={}"/>
+
+	</form>
+
+	<div ng-repeat="pokemon in vm.pokemons">
+		<h5>{{pokemon.pokeId}}</h5>
+		<h5>{{pokemon.name}}</h5>
+	</div>
+</body>
+</html>

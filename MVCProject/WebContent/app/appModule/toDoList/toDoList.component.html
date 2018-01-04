@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.clickable:hover {
+background-color: CadetBlue;
+color:LawnGreen;
+font-size: 20px;
+
+}
+</style>
+	
+	
+	<meta charset="UTF-8">
+		<title>Todo List</title>	
+	</head>
+	
+	<body>
+<!-- 	<form>
+  Name<input type="text" ng-model="product.name" /><br />
+  Price<input type="text" ng-model="product.price" /><br />
+  ImageURL<input type="text" ng-model="product.imgUrl" /><br />
+  Rating<input type="number" ng-model="product.rating" /><br />
+  <input type="submit" value="Add Prodcut" ng-click="vm.addProduct(product);product={}" />
+</form>
+	
+	<h3>
+	Number of Total Products: {{vm.getNumProduct()}}
+	</h3>
+	
+	<div ng-repeat="product in vm.products">
+	<h5>{{product.name}}</h5>
+	</div>	 -->
+	
+	<h1> Todo List</h1>
+<form ng-hide="vm.selected">
+To Do <input type="text" ng-model="todo.task"/> <br>
+Description <input type="text" ng-model="todo.description"/> <br>
+ <input type="submit" value="Add To Do" ng-click="vm.addTodo(todo);todo={}"/>
+
+<br />
+<br/>
+To Do Count: {{vm.getNumTodo()}}
+<br>
+
+</form>
+
+<table ng-hide="vm.selected">
+  <tr>
+    <th>Task</th>
+    <th>Description</th>
+    <th>Mark</th>
+    <th>Completed</th>
+    <th>Delete</th>
+  </tr>
+  <tr ng-repeat="todo in vm.todos">
+    <td class="clickable" ng-click="vm.displayTodo(todo)">{{todo.task}}</td>
+    <td>
+    {{todo.description}}
+    </td>
+    <td>
+    <form>
+    <input type="checkbox" ng-model="todo.completed">
+    </form>
+    </td>
+    <td>
+    {{todo.completed}}
+    </td>
+    <td>
+    <button type="button" ng-click="vm.deleteTodo(todo.id)">Delete
+    </button>
+    </td>
+  </tr>
+</table>
+<div ng-show="vm.selected && !vm.editTodo">
+<h2>Name: {{vm.selected.task}}</h2>
+<h3>Description: {{vm.selected.description}}</h3><br>
+<button type="button" ng-click="vm.displayTable()">Take Me Back to ToDo List</button><br>
+<button type="button" ng-click="vm.setEditTodo()">Edit ToDo</button>
+
+</div>
+
+<form ng-show="vm.editTodo" ng-hide="!vm.editTodo" >
+  Task<input type="text" ng-model="vm.editTodo.task" /><br />
+  Description<input type="text" ng-model="vm.editTodo.description" /><br />
+  <input type="submit" value="Cancel" ng-click="vm.editTodo=null" /><br>
+  <input type="submit" value="Save" ng-click="vm.updateTodo(vm.editTodo);vm.editTodo=null" />
+  
+</form> 
+	
+	</body>
+
+
+
+</html>
