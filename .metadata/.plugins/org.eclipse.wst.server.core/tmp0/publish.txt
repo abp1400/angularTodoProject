@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Thu Jan 04 14:19:44 MST 2018
+#Thu Jan 04 22:15:47 MST 2018
 org.eclipse.jst.j2ee.server\:/binary\:/Users/perezidential/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.3.2.RELEASE/562b3b775b6e8e7113b5d23b21946f939658bd19/spring-web-4.3.2.RELEASE.jar=WEB-INF/lib/spring-web-4.3.2.RELEASE.jar
 org.eclipse.jst.j2ee.server\:JPAProject=WEB-INF/lib/JPAProject.jar
