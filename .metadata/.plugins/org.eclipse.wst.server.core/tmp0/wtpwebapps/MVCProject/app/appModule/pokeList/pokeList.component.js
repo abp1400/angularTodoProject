@@ -10,10 +10,10 @@ angular.module('appModule')
 		
 		
 		
-		pokemonService.index()
-		.then(function(response) {
-			vm.pokemons = response.data;
-			});
+//		pokemonService.index()
+//		.then(function(response) {
+//			vm.pokemons = response.data;
+//			});
 		
 		var reload = function() {
 			pokemonService.index()

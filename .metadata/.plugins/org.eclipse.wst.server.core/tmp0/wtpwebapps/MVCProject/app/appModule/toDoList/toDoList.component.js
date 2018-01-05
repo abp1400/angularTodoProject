@@ -23,19 +23,27 @@ angular.module('appModule')
 
 	vm.todos = [];
 	
-	vm.todos = todoService.index();
+	var reload = function() {
+		todoService.index()
+		.then(function(response) {
+		vm.todos = response.data;
+		console.log('in reload method');
+		});
+	}
+	
+	reload();
+	
 	
 	vm.addTodo = function(todo) {
-		let copy = angular.copy(todo)
-		
-		todoService.create(copy);
-		vm.todos = todoService.index();
-		
-	};
+			todo.completed = false;
+			todoService.create(todo).
+			then(reload);
+			}
 	
-	vm.getNumTodo = function() {
-		vm.todos = todoService.index();
-		return vm.todos.length;
+
+//	
+vm.getNumTodo = function() {
+return vm.todos.length;
     };
       
       vm.selected= null;
@@ -47,10 +55,10 @@ angular.module('appModule')
       };
       
       vm.displayTable = function(){
-    	  	vm.selected = null;
-    	  
+   	  	vm.selected = null;
+   	  
       };
-      
+    
       vm.setEditTodo = function(){
     	  		let copy = angular.copy(vm.selected);
     	  		
@@ -58,16 +66,16 @@ angular.module('appModule')
       };
       
       vm.updateTodo = function(todo) {
-    	  todoService.update(todo);
+    	  todoService.update(todo)
+    	  .then(reload);
     	  vm.selected = todo;
-    	  vm.todos = todoService.index();
-    	  
+  	  
       };
       
       vm.deleteTodo = function(id){
-    	  todoService.delete(id);
-    	  vm.todos = todoService.index();
-      }
+    	  todoService.delete(id)
+    	  .then(reload);
+      };
       
 	},
 	controllerAs:'vm'

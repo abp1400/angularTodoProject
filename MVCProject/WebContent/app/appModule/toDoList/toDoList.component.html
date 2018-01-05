@@ -76,7 +76,7 @@ To Do Count: {{vm.getNumTodo()}}
     </td>
     <td>
     <form>
-    <input type="checkbox" ng-model="todo.completed">
+    <input type="checkbox" ng-model="todo.completed" ng-change="vm.updateTodo(todo)">
     </form>
     </td>
     <td>
@@ -90,7 +90,8 @@ To Do Count: {{vm.getNumTodo()}}
 </table>
 <div ng-show="vm.selected && !vm.editTodo">
 <h2>Name: {{vm.selected.task}}</h2>
-<h3>Description: {{vm.selected.description}}</h3><br>
+<h3>Description: {{vm.selected.description}}</h3>
+<h3>Completed: {{vm.selected.completed}}</h3>
 <button type="button" ng-click="vm.displayTable()">Take Me Back to ToDo List</button><br>
 <button type="button" ng-click="vm.setEditTodo()">Edit ToDo</button>
 

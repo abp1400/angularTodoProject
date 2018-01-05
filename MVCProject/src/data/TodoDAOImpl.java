@@ -40,33 +40,40 @@ public class TodoDAOImpl implements TodoDAO {
 	public Todo create(int uid, String todoJson) {
 		User assignedUser = em.find(User.class, uid);
 		ObjectMapper mapper = new ObjectMapper();
+		Todo newTodo = null;
 		try {
-			Todo newTodo = mapper.readValue(todoJson, Todo.class);
+			newTodo = mapper.readValue(todoJson, Todo.class);
 			newTodo.setUser(assignedUser);
 			em.persist(newTodo);
 			em.flush();
-			return newTodo;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return newTodo;
 
 	}
 	
 
 	@Override
 	public Todo update(int uid, int tid, String todoJson) {
-		
+			Todo tprime = null;
 			ObjectMapper mapper = new ObjectMapper();
 			try {
-				Todo tprime = mapper.readValue(todoJson, Todo.class);
+				tprime = mapper.readValue(todoJson, Todo.class);
 				Todo managed = em.find(Todo.class, tid);
-				managed.setTask(tprime.getTask());
-				managed.setDescription(tprime.getDescription());
-				managed.setCompleteDate(tprime.getCompleteDate());
-				managed.setDueDate(tprime.getDueDate());
-				managed.setUpdatedAt(tprime.getUpdatedAt());				
-				return managed;
+				
+				if (managed.getUser().getId() == uid) {
+				
+					managed.setTask(tprime.getTask());
+					managed.setDescription(tprime.getDescription());
+					managed.setCompleted(tprime.getCompleted());
+					managed.setCompleteDate(tprime.getCompleteDate());
+					managed.setDueDate(tprime.getDueDate());
+					managed.setUpdatedAt(tprime.getUpdatedAt());				
+					return managed;} else {
+					
+						return null;
+						}
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("caught a bad break");
@@ -78,14 +85,20 @@ public class TodoDAOImpl implements TodoDAO {
 	@Override
 	public Boolean destroy(int uid, int tid) {
 		Todo t = em.find(Todo.class, tid);
-		em.remove(t);
-		if (em.find(Todo.class, tid) == null) {
-			return true;
-		} else {
-			System.out.println("whoops!");
-			return false;
-			
+		if (t== null) {
+			return null;
 		}
+		if(t.getUser().getId() == uid){
+			em.remove(t);
+			if (em.find(Todo.class, tid) == null) {
+				return true;}
+				 else {
+				System.out.println("whoops! SQL Error!");
+				return false;
+				 }
+		} else
+		System.out.println("ids didn't match");	
+		return false; 
 	}
-
+	
 }
